@@ -12,7 +12,7 @@ class ProductService {
     }
 
     public async getAllProducts(): Promise<IProduct[]> {
-        return await Product.find().populate('category');
+        return await Product.find().populate('category', 'name');
     }
 
     public async updateProduct(productId: string, updatedProduct: Partial<IProduct>): Promise<IProduct | null> {
