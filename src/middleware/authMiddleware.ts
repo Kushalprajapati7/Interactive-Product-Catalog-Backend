@@ -16,8 +16,6 @@ async function verifyToken(req: Request, res: Response, next: NextFunction): Pro
         const decoded = JwtUtills.verifyToken(token) as { userId: string, role: string };
         (req as CustomRequest).userId = decoded.userId;
         (req as CustomRequest).role = decoded.role;
-        // console.log(decoded,"d");
-
         next();
     } catch (error) {
         res.status(500).json({ error: "Token Has been Expired !" });
